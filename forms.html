@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FormFlow API - Submission Management</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="icon" href="/assets/images/favicon.png"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://techservice.ng/assets/css/styles.css"> 
+    <link rel="stylesheet" href="/assets/css/styles.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="site-header">
+        <div class="header-inner">
+            <div class="logo-container">
+                <a href="/dashboard" aria-label="FormFlow Dashboard Home">
+                    <span class="logo-text">FormFlow<span class="logo-dot">.ng</span></span>
+                </a>
+            </div>
+
+            <nav id="desktop-nav" class="main-nav">
+                <ul>
+                    <li><a href="/docs/api-reference"><i class="fas fa-book"></i> Docs</a></li>
+                    <li class="user-dropdown">
+                        <a href="/settings">Welcome, <b>Dev User</b></a>
+                    </li>
+                    <li><a href="/app/logout" class="btn btn-primary btn-sm">Logout</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+     <div class="dashboard-wrapper">
+    
+    <nav id="app-navbar">
+        <ul>
+            <li><a href="/dashboard"><i class="fas fa-home"></i> Overview</a></li>
+            <li><a href="/submissions"><i class="fas fa-list-alt"></i> Submissions</a></li>
+            <li class="active"><a href="/forms"><i class="fas fa-file-code"></i> My Forms</a></li>
+            <li><a href="/settings"><i class="fas fa-cogs"></i> Settings</a></li>
+        </ul>
+    </nav>
+
+    <section id="forms-list-page">
+        <header class="forms-header-controls">
+            <h1>My Forms (5 Active)</h1>
+            
+            <div class="form-controls">
+                
+                <div class="control-group search-group">
+                    <input type="text" id="search-form" placeholder="Search forms by ID..." class="control-input">
+                    <button class="btn btn-secondary btn-sm"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <button class="btn btn-primary create-form-btn">
+                    <i class="fas fa-plus"></i> Create New Form
+                </button>
+            </div>
+        </header>
+
+        <div class="forms-inventory-grid">
+            
+            <div class="form-card card">
+                <div class="form-card-header">
+                    <h3>Contact Us Form</h3>
+                    <span class="form-status active">Active</span>
+                </div>
+                
+                <div class="form-details">
+                    <p><strong>Form ID:</strong> <code>contact-us-123</code></p>
+                    <p><strong>Total Submissions:</strong> 1,120</p>
+                    <p><strong>Last Submission:</strong> 2 days ago</p>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/forms/contact-us-123/config" class="btn btn-secondary btn-sm"><i class="fas fa-cogs"></i> Settings</a>
+                    <a href="/submissions?form=contact-us-123" class="btn btn-primary btn-sm"><i class="fas fa-list-alt"></i> View Submissions</a>
+                </div>
+            </div>
+
+            <div class="form-card card">
+                <div class="form-card-header">
+                    <h3>Project Quote Request</h3>
+                    <span class="form-status active">Active</span>
+                </div>
+                
+                <div class="form-details">
+                    <p><strong>Form ID:</strong> <code>quote-request-456</code></p>
+                    <p><strong>Total Submissions:</strong> 880</p>
+                    <p><strong>Last Submission:</strong> 5 hours ago</p>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/forms/quote-request-456/config" class="btn btn-secondary btn-sm"><i class="fas fa-cogs"></i> Settings</a>
+                    <a href="/submissions?form=quote-request-456" class="btn btn-primary btn-sm"><i class="fas fa-list-alt"></i> View Submissions</a>
+                </div>
+            </div>
+
+            <div class="form-card card">
+                <div class="form-card-header">
+                    <h3>Newsletter Signup</h3>
+                    <span class="form-status active">Active</span>
+                </div>
+                
+                <div class="form-details">
+                    <p><strong>Form ID:</strong> <code>newsletter-789</code></p>
+                    <p><strong>Total Submissions:</strong> 450</p>
+                    <p><strong>Last Submission:</strong> 3 hours ago</p>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/forms/newsletter-789/config" class="btn btn-secondary btn-sm"><i class="fas fa-cogs"></i> Settings</a>
+                    <a href="/submissions?form=newsletter-789" class="btn btn-primary btn-sm"><i class="fas fa-list-alt"></i> View Submissions</a>
+                </div>
+            </div>
+            
+            <div class="form-card card inactive">
+                <div class="form-card-header">
+                    <h3>Old Feedback Form</h3>
+                    <span class="form-status inactive">Inactive</span>
+                </div>
+                
+                <div class="form-details">
+                    <p><strong>Form ID:</strong> <code>feedback-legacy</code></p>
+                    <p><strong>Total Submissions:</strong> 15</p>
+                    <p><strong>Last Submission:</strong> 1 year ago</p>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/forms/feedback-legacy/config" class="btn btn-secondary btn-sm"><i class="fas fa-cogs"></i> Settings</a>
+                    <a href="/submissions?form=feedback-legacy" class="btn btn-primary btn-sm"><i class="fas fa-list-alt"></i> View Submissions</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+    </main>
+    
+    <footer id="site-footer" class="footer-section">
+        </footer>
+    <script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

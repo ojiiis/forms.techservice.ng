@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FormFlow API - Submission Management</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="icon" href="/assets/images/favicon.png"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://techservice.ng/assets/css/styles.css"> 
+    <link rel="stylesheet" href="/assets/css/styles.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="site-header">
+        <div class="header-inner">
+            <div class="logo-container">
+                <a href="/dashboard" aria-label="FormFlow Dashboard Home">
+                    <span class="logo-text">FormFlow<span class="logo-dot">.ng</span></span>
+                </a>
+            </div>
+
+            <nav id="desktop-nav" class="main-nav">
+                <ul>
+                    <li><a href="/docs/api-reference"><i class="fas fa-book"></i> Docs</a></li>
+                    <li class="user-dropdown">
+                        <a href="/settings">Welcome, <b>Dev User</b></a>
+                    </li>
+                    <li><a href="/app/logout" class="btn btn-primary btn-sm">Logout</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="dashboard-wrapper">
+            
+            <nav id="app-navbar">
+                <ul>
+                    <li class="active"><a href="/dashboard"><i class="fas fa-home"></i> Overview</a></li>
+                    <li><a href="/submissions"><i class="fas fa-list-alt"></i> Submissions</a></li>
+                    <li><a href="/forms"><i class="fas fa-file-code"></i> My Forms</a></li>
+                    <li><a href="/settings"><i class="fas fa-cogs"></i> Settings</a></li>
+                </ul>
+            </nav>
+
+            <section id="dashboard-overview">
+                <header class="dashboard-header-content">
+                    <h1>Dashboard Overview</h1>
+                </header>
+                
+                <div class="dashboard-grid">
+                    
+                    <div class="stat-card total-submissions card">
+                        <h3>Total Submissions</h3>
+                        <p class="stat-value"><b>2,450</b></p>
+                        <p class="stat-trend"><i class="fas fa-arrow-up"></i> 12% vs last month</p>
+                    </div>
+                    
+                    <div class="stat-card forms-active card">
+                        <h3>Active Forms</h3>
+                        <p class="stat-value"><b>5</b></p>
+                        <p class="stat-trend"><i class="fas fa-check-circle"></i> Running smoothly</p>
+                    </div>
+                    
+                    <div class="api-key-card card">
+                        <h3>Your API Key (Secret)</h3>
+                        <div class="api-key-box">
+                            <code id="apiKeyDisplay">
+                                0xDECF...A7B8
+                            </code>
+                            <button class="btn btn-sm btn-primary copy-key" data-key="0xDECF23456789ABCDEF0123456789A7B8">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <p class="key-warning"><i class="fas fa-exclamation-triangle"></i> Keep this key secret! Do not expose it client-side.</p>
+                    </div>
+                    
+                    <div class="recent-submissions-card card">
+                        <h3>Recent Submissions</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Form ID</th>
+                                    <th>Received</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="/submissions/1">contact-us</a></td>
+                                    <td>2 min ago</td>
+                                    <td>Aisha Bello</td>
+                                    <td><b>New</b></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/submissions/2">quote-request</a></td>
+                                    <td>1 hr ago</td>
+                                    <td>Chris E.</td>
+                                    <td>Reviewed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="/submissions" class="view-all-link">View All Submissions &rarr;</a>
+                    </div>
+                    
+                </div>
+            </section>
+            
+        </div>
+    </main>
+    
+    <footer id="site-footer" class="footer-section">
+        </footer>
+    <script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

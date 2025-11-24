@@ -1,0 +1,693 @@
+/* ================================================= */
+/* 1. DASHBOARD OVERRIDES & LAYOUT WRAPPER           */
+/* ================================================= */
+
+/* Override the body background for a subtle app feel */
+body {
+    background-color: #f4f7f9; 
+}
+
+/* Dashboard wrapper to contain and center the content */
+.dashboard-wrapper {
+    max-width: 1400px; /* Slightly wider than the main site content */
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* ================================================= */
+/* 2. APPLICATION NAVIGATION BAR (#app-navbar)       */
+/* ================================================= */
+
+#app-navbar {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+#app-navbar ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+#app-navbar li a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent; /* Prepare for active state */
+}
+
+#app-navbar li a i {
+    margin-right: 0.5rem;
+}
+
+#app-navbar li a:hover {
+    color: var(--primary-color);
+}
+
+#app-navbar li.active a {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* ================================================= */
+/* 3. DASHBOARD HEADER & GRID STRUCTURE              */
+/* ================================================= */
+
+.dashboard-header-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    /* Defines a 4-column layout for desktop */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1.5rem; /* Replaced var(--space-md) */
+}
+
+/* Base Card Style */
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem; /* Replaced var(--space-md) */
+    border-radius: 8px; /* Replaced var(--border-radius-md) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Stat Cards */
+.stat-card {
+    grid-column: span 1; 
+    border-left: 5px solid var(--primary-color);
+}
+
+.stat-card h3 {
+    font-size: 1rem; 
+    color: #666; /* Replaced var(--color-text-secondary) */
+    margin-bottom: 0.5rem; /* Replaced var(--space-xs) */
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 2.25rem; /* Increased size for impact */
+    font-weight: 800;
+    color: var(--secondary-color); /* Replaced var(--color-text-dark) */
+    margin-bottom: 0.25rem; 
+}
+
+.stat-trend {
+    font-size: 0.875rem; /* Replaced var(--font-size-sm) */
+    color: #28a745; /* Placeholder for positive trend color */
+}
+
+.stat-trend i {
+    margin-right: 0.25rem;
+}
+
+/* API Key Card */
+.api-key-card {
+    grid-column: span 2; /* Takes 2 columns */
+}
+
+.api-key-box {
+    display: flex;
+    align-items: center;
+    background-color: #f4f7f9; /* Subtle background for the code box */
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+#apiKeyDisplay {
+    flex-grow: 1;
+    font-family: monospace;
+    font-size: 1.125rem;
+    color: var(--secondary-color);
+    padding-right: 0.75rem;
+}
+
+.key-warning {
+    font-size: 0.875rem;
+    color: #dc3545; /* Placeholder for error color */
+    margin-top: 0.5rem;
+}
+
+/* Recent Submissions Card */
+.recent-submissions-card {
+    grid-column: span 4; /* Takes full width */
+}
+
+/* Table Styling */
+.recent-submissions-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.recent-submissions-card th, 
+.recent-submissions-card td {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.recent-submissions-card th {
+    font-weight: 700;
+    color: #555;
+    background-color: #fafafa;
+}
+
+.view-all-link {
+    display: block;
+    margin-top: 1.5rem;
+    text-align: right;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+/* ================================================= */
+/* 4. MEDIA QUERIES (Responsiveness)                 */
+/* ================================================= */
+
+@media (max-width: 992px) {
+    .dashboard-wrapper {
+        padding: 1rem;
+    }
+
+    #app-navbar ul {
+        justify-content: space-around;
+    }
+
+    /* Tablet view: simplify grid to 2 columns */
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .stat-card,
+    .api-key-card {
+        grid-column: span 1; /* Stats and API Key take half width */
+    }
+
+    .recent-submissions-card {
+        grid-column: span 2; /* Table takes full width */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Small Mobile view: everything stacks */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card,
+    .api-key-card,
+    .recent-submissions-card {
+        grid-column: span 1;
+    }
+
+    #app-navbar ul {
+        flex-direction: column;
+    }
+
+    #app-navbar li a {
+        justify-content: center;
+        padding: 0.75rem;
+    }
+}
+
+
+/* ======================================= */
+/* 5. SUBMISSIONS LIST PAGE STYLES         */
+/* ======================================= */
+
+.submissions-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.submissions-header-controls h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.submission-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap; /* Allows controls to wrap on smaller screens */
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: #444;
+}
+
+.control-input {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.control-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Specific Search Styling */
+.search-group {
+    position: relative;
+    gap: 0; /* Remove gap between input and button */
+}
+
+.search-group .control-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px; /* Overlap border */
+    height: 38px; /* Match input height */
+}
+
+/* Submissions Table */
+.submissions-table-container {
+    /* Uses the .card style for background, border-radius, and shadow */
+    overflow-x: auto; /* Allows horizontal scrolling on small screens */
+}
+
+.submissions-table-container table {
+    width: 100%;
+    min-width: 700px; /* Ensure table doesn't get too narrow */
+    border-collapse: collapse;
+}
+
+.submissions-table-container thead th {
+    background-color: #fafafa;
+    color: #666;
+    font-weight: 700;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 2px solid #eee;
+    text-align: left;
+}
+
+.submissions-table-container tbody td {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+/* Unread Rows Highlight */
+.submission-row.unread {
+    background-color: #fff9f9; /* Light red background */
+}
+
+.submission-row.unread .col-date,
+.submission-row.unread .col-name {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-badge.new {
+    background-color: #007bff; /* Primary Blue */
+    color: white;
+}
+
+.status-badge.reviewed {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+/* Actions Column */
+.col-actions a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.col-actions a i {
+    margin-right: 0.25rem;
+}
+
+/* Pagination */
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+}
+
+.pagination-controls p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ======================================= */
+/* MEDIA QUERIES FOR SUBMISSIONS           */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .submissions-header-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .submission-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .search-group {
+        flex-grow: 1; /* Search group takes available space */
+    }
+
+    /* Hide less critical columns on smaller screens */
+    .submissions-table-container .col-email {
+        display: none !important; 
+    }
+}
+
+@media (max-width: 576px) {
+    .submission-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .control-group:not(.search-group), .export-btn {
+        width: 100%;
+    }
+    
+    .submissions-table-container table {
+        /* Allow horizontal scrolling on very small screens */
+    }
+}
+
+
+
+
+
+/* ======================================= */
+/* 6. MY FORMS PAGE STYLES                 */
+/* ======================================= */
+
+.forms-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.forms-header-controls h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.form-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+/* Reusing search group styles from submissions page */
+.form-controls .search-group {
+    display: flex;
+    gap: 0;
+}
+
+/* Forms Inventory Grid */
+.forms-inventory-grid {
+    display: grid;
+    /* Two columns for desktop, allowing a clear view of details */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 1.5rem;
+}
+
+.form-card {
+    /* Inherits base .card styles: white background, shadow, padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+    border-left: 5px solid var(--primary-color);
+}
+
+.form-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-card.inactive {
+    opacity: 0.7;
+    border-left: 5px solid #6c757d; /* Grey for inactive */
+}
+
+.form-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-card-header h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.form-status {
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.form-status.active {
+    background-color: #d4edda; /* Light Green */
+    color: #155724; /* Dark Green Text */
+}
+
+.form-status.inactive {
+    background-color: #f8d7da; /* Light Red */
+    color: #721c24; /* Dark Red Text */
+}
+
+.form-details {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.form-details p {
+    margin: 0.5rem 0;
+}
+
+.form-details code {
+    background-color: #f4f7f9;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #eee;
+}
+
+.form-actions .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* ======================================= */
+/* MEDIA QUERIES FOR FORMS PAGE            */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    .forms-inventory-grid {
+        /* Single column layout on smaller screens */
+        grid-template-columns: 1fr;
+    }
+    
+    .form-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .form-controls .search-group {
+        width: 100%;
+    }
+    
+    .create-form-btn {
+        width: 100%;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+
+
+/* ======================================= */
+/* 7. CREATE NEW FORM PAGE STYLES          */
+/* ======================================= */
+
+.form-creation-header {
+    margin-bottom: 2rem;
+}
+
+.form-creation-header .subtitle-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.creation-grid {
+    display: grid;
+    /* Main setup form is 3/5, instructions are 2/5 */
+    grid-template-columns: 3fr 2fr; 
+    gap: 2rem;
+    align-items: flex-start; /* Keeps items at the top */
+}
+
+/* Card Styling for Form and Instructions */
+.setup-card, .instructions-card {
+    /* Inherit base .card styles */
+    padding: 1.5rem;
+}
+
+.setup-card h2, .instructions-card h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Group overrides for the Setup Card */
+#new-form-setup .form-group {
+    /* Overrides the contact form's 50% width rule */
+    width: 100% !important; 
+    margin: 0 0 1.5rem 0 !important;
+}
+
+#new-form-setup label {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.hint-text {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.create-endpoint-btn {
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+
+/* Instructions Card Styling */
+.instructions-card {
+    background-color: #f8faff; /* Lighter background for code emphasis */
+    border: 1px dashed var(--primary-color);
+}
+
+.code-example {
+    background-color: #f0f4f7;
+    padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+}
+
+.code-example p {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.endpoint-code, .code-example pre code {
+    display: block;
+    font-family: monospace;
+    font-size: 0.9rem;
+    word-break: break-all;
+    line-height: 1.4;
+    color: #c0392b; /* Error/Endpoint color for distinction */
+}
+
+.placeholder-id {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.docs-link-promo {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* ======================================= */
+/* MEDIA QUERIES FOR FORM CREATION         */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .creation-grid {
+        /* Stack columns vertically on smaller screens */
+        grid-template-columns: 1fr;
+    }
+}
