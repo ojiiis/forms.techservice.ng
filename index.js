@@ -120,6 +120,8 @@ app.get("/script/:form_id",(req,res)=>{
             let run = await fetch("https://forms.techservice.ng/api/push_form/${form_id}",{method:"POST",headers:{
             "Content-Type":"application/json"
             },body:JSON.stringify(data)}).then(r=>r.json()).catch(e=>console.error(e));
+            if(run.status)alert(run.data.message);
+            if(run.data.redirect)setTimeout(()=>window.location=run.data.redirect,2000);
            v.reset();  
         }
     `;
