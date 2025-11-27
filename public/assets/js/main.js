@@ -50,3 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+[...document.getElementsByTagName("form")].forEach(v=>{
+    v.addEventListener("submit",async function(e){
+ e.preventDefault();
+ let data = Object.fromEntries(new FormData(v));
+ console.log(data);
+  fetch(new URL(v.action).pathname,{
+    method:v.method.toUpperCase(),
+    headers:{
+     "Content-Type":"application/json"
+    },
+    body:JSON.stringify(data)
+  });
+    })
+})

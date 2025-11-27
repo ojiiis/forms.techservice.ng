@@ -16,28 +16,7 @@
 </head>
 <body>
 
-    <header id="site-header">
-        <div class="header-inner">
-            <div class="logo-container">
-                <a href="/dashboard" aria-label="FormFlow Dashboard Home">
-                    <span class="logo-text">FormFlow<span class="logo-dot">.ng</span></span>
-                </a>
-            </div>
-
-            <nav id="desktop-nav" class="main-nav">
-                <ul>
-                    <li><a href="/docs/api-reference"><i class="fas fa-book"></i> Docs</a></li>
-                    <li class="user-dropdown">
-                        <a href="/settings">Welcome, <b>Dev User</b></a>
-                    </li>
-                    <li><a href="/app/logout" class="btn btn-primary btn-sm">Logout</a></li>
-                </ul>
-            </nav>
-            <button id="mobile-menu-toggle" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+ include("header.html")
 
     <main id="main-content">
         <div class="dashboard-wrapper">
@@ -60,13 +39,13 @@
                     
                     <div class="stat-card total-submissions card">
                         <h3>Total Submissions</h3>
-                        <p class="stat-value"><b>2,450</b></p>
+                        <p class="stat-value"><b><var>submission</var></b></p>
                         <p class="stat-trend"><i class="fas fa-arrow-up"></i> 12% vs last month</p>
                     </div>
                     
                     <div class="stat-card forms-active card">
                         <h3>Active Forms</h3>
-                        <p class="stat-value"><b>5</b></p>
+                        <p class="stat-value"><b><var>active</var></b></p>
                         <p class="stat-trend"><i class="fas fa-check-circle"></i> Running smoothly</p>
                     </div>
                     
@@ -74,7 +53,7 @@
                         <h3>Your API Key (Secret)</h3>
                         <div class="api-key-box">
                             <code id="apiKeyDisplay">
-                                0xDECF...A7B8
+                                <var>key</var>
                             </code>
                             <button class="btn btn-sm btn-primary copy-key" data-key="0xDECF23456789ABCDEF0123456789A7B8">
                                 <i class="fas fa-copy"></i> Copy
@@ -90,23 +69,20 @@
                                 <tr>
                                     <th>Form ID</th>
                                     <th>Received</th>
-                                    <th>Name</th>
+                                    <th>Data</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                
+                              <for exp="$i (in) $forms">
                                 <tr>
-                                    <td><a href="/submissions/1">contact-us</a></td>
-                                    <td>2 min ago</td>
-                                    <td>Aisha Bello</td>
+                                    <td><a href="/submissions/1">$i.form_id</a></td>
+                                    <td>$i.date</td>
+                                    <td>$i.data</td>
                                     <td><b>New</b></td>
                                 </tr>
-                                <tr>
-                                    <td><a href="/submissions/2">quote-request</a></td>
-                                    <td>1 hr ago</td>
-                                    <td>Chris E.</td>
-                                    <td>Reviewed</td>
-                                </tr>
+                              </for>
                             </tbody>
                         </table>
                         <a href="/submissions" class="view-all-link">View All Submissions &rarr;</a>

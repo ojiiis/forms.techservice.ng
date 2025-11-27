@@ -61,23 +61,18 @@
             
             <div class="setup-card card">
                 <h2>1. Form Details</h2>
-                <form id="new-form-setup">
+                <form method="POST" action="new" id="new-form-setup">
                     
                     <div class="form-group full-width">
-                        <label for="formName">Form Name (e.g., Contact Us, Quote Request)</label>
+                        <label for="formName">Form Label (e.g., Contact Us, Quote Request)</label>
                         <input type="text" id="formName" name="formName" placeholder="A descriptive name for your form" required>
                     </div>
 
+                  
                     <div class="form-group full-width">
-                        <label for="formId">Unique Form ID (Used in the URL - must be lowercase and hyphenated)</label>
-                        <input type="text" id="formId" name="formId" placeholder="e.g., contact-form-2025" pattern="[a-z0-9-]+" required>
-                        <small class="hint-text">This must be unique to your account.</small>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="notificationEmail">Notification Email</label>
-                        <input type="email" id="notificationEmail" name="notificationEmail" placeholder="submissions@yourcompany.com" required>
-                        <small class="hint-text">Where should we send submission alerts?</small>
+                        <label for="responseMessage">Response Message (Optional)</label>
+                        <input type="text" id="responseMessage" name="responseMessage" placeholder="Form submited successfully.">
+                        <small class="hint-text">A message that is showned to users on success submition</small>
                     </div>
                     
                     <div class="form-group full-width">
@@ -126,6 +121,6 @@
     
     <footer id="site-footer" class="footer-section">
         </footer>
-    <script src="/assets/js/dashboard.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>
