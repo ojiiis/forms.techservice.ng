@@ -123,6 +123,7 @@ app.get("/script/:form_id",(req,res)=>{
            v.reset();  
         }
     `;
+    
 res.end(script);
 });
 app.post("/new",async(req,res)=>{
