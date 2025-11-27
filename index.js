@@ -117,7 +117,7 @@ app.get("/script/:form_id",(req,res)=>{
         window.tech_service_form = async (v)=>{
             let data = Object.fromEntries(new FormData(v));
             
-            let run = await fetch("http://localhost:3000/api/push_form/${form_id}",{method:"POST",headers:{
+            let run = await fetch("https://forms.techservice.ng/api/push_form/${form_id}",{method:"POST",headers:{
             "Content-Type":"application/json"
             },body:JSON.stringify(data)}).then(r=>r.json()).catch(e=>console.error(e));
            v.reset();  
