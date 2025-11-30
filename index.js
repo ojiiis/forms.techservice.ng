@@ -144,7 +144,8 @@ app.post("/new",async(req,res)=>{
       res.end(JSON.stringify(response));
 });
 app.post("/api/push_form/:form_id",async(req,res)=>{
-      let [form_id,data, pubKey] = [req.params.form_id,req.body,await public_key(user_id)];
+      let [form_id,data] = [req.params.form_id,req.body];
+      let pubKey = await public_key(user_id);
       let [message,query,_] = await Promise.all([
          func.query("SELECT success_message,redirect_url FROM `forms` WHERE `form_id`=? ",[form_id]),
          func.query("INSERT INTO `form_submission`(`form_id`,`owner_id`, `data`, `date`) VALUES (?,?,?,?)",[form_id,pubKey,JSON.stringify(data),Math.floor(Date.now()/100)]),
