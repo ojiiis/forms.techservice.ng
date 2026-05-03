@@ -1,8 +1,8 @@
 import mysql from "mysql2";
 const con = mysql.createPool({
     host:"localhost",
-    user:"admin",
-    password:"1234",
+    user:"doksummz_form",
+    password:"[=p+sFxADuVE",
     database:"doksummz_form"
 });
 
