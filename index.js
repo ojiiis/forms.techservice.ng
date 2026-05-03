@@ -19,6 +19,10 @@ app.use((req,res,next)=>{
     user_id = getCookie(req,"uid");
     next();
 });
+
+app.get("/.well-known/acme-challenge/O4VMzk8OYWxmbAhkMTl0sNv7dp6tR9vpLZh1azXWWPY",(req,res)=>{
+  res.end("O4VMzk8OYWxmbAhkMTl0sNv7dp6tR9vpLZh1azXWWPY.2n5mN8j3a9eXoQhHqjKZy7r2b1vVh3g5s6t8w9x0");
+});
 app.get("/logout",(req,res)=>{
   res.header("Set-Cookie",`uid=; Path=/; HttpOnly`);
   res.redirect("/");
