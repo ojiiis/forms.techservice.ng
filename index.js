@@ -20,8 +20,8 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.get("/.well-known/acme-challenge/wUy1D9WsYB-VF0CmxpS_iv9dGPGkmXt5I4uU_HF-Jk8",(req,res)=>{
-  res.end("wUy1D9WsYB-VF0CmxpS_iv9dGPGkmXt5I4uU_HF-Jk8.7nXo2sHj3l6mLh8ZtqjKJQyXoVh7e2a3vN8sWcQ");
+app.get("/.well-known/acme-challenge/79NIalHEMm0YZFFPWmnl1uoTx5hkkbJAhTXvpoEgO5Y",(req,res)=>{
+  res.end("79NIalHEMm0YZFFPWmnl1uoTx5hkkbJAhTXvpoEgO5Y.Gr4Oc50vxgPq01-CP7aUQVMkOMJDFd_7-zr-e7TNA1g");
 });
 app.get("/logout",(req,res)=>{
   res.header("Set-Cookie",`uid=; Path=/; HttpOnly`);
