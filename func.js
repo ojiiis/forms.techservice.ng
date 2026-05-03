@@ -6,6 +6,13 @@ const con = mysql.createPool({
     database:"doksummz_form"
 });
 
+// const con = mysql.createPool({
+//     host:"localhost",
+//     user:"admin",
+//     password:"1234",
+//     database:"doksummz_form"
+// });
+
 const query = (query,input)=> new Promise((res,rej)=>{
     con.getConnection((err,connection)=>{
 if(err)return rej(err);

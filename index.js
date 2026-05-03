@@ -23,6 +23,10 @@ app.use((req,res,next)=>{
 app.get("/.well-known/acme-challenge/79NIalHEMm0YZFFPWmnl1uoTx5hkkbJAhTXvpoEgO5Y",(req,res)=>{
   res.end("79NIalHEMm0YZFFPWmnl1uoTx5hkkbJAhTXvpoEgO5Y.Gr4Oc50vxgPq01-CP7aUQVMkOMJDFd_7-zr-e7TNA1g");
 });
+app.get("/docs/api-reference",(req,res)=>{
+  //res.end(ojs.get("docs.html"));
+  res.end("");
+});
 app.get("/logout",(req,res)=>{
   res.header("Set-Cookie",`uid=; Path=/; HttpOnly`);
   res.redirect("/");
@@ -108,8 +112,26 @@ app.get("/submissions/:form_id",async(req,res)=>{
  res.end(ojs.get("submission.html",{user:user.fullname,forms,total_forms:forms.length}));
 });
 app.get("/submissions/view/:form_uid",async(req,res)=>{
+   let [pubKey,user] = await Promise.all([public_key(user_id),getUser(user_id)]);
   const form_uid= req.params.form_uid;
-   res.end("");
+  let f = await query("SELECT * FROM `form_submission` WHERE id=? AND owner_id=?",[form_uid,pubKey]);
+   const data = JSON.parse(f[0].data);
+ let r = `<table>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>`;
+    
+for (let i in data) {
+  r += `<tr>
+    <td>${i}</td>
+    <td>${data[i]}</td>
+  </tr>`;
+}
+
+r += `</table>`;
+
+res.end(ojs.get("view.html", { data: r ,user:user.fullname}));
 });
 app.get("/forms",async(req,res)=>{
     let [pubKey,user] = await Promise.all([public_key(user_id),getUser(user_id)]);
