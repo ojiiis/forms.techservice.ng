@@ -1,9 +1,8 @@
 import mysql from "mysql2";
-
 const con = mysql.createPool({
     host:"localhost",
-    user:"doksummz_form",
-    password:"J=^y0hCh)r3W",
+    user:"admin",
+    password:"1234",
     database:"doksummz_form"
 });
 
@@ -18,16 +17,36 @@ connection.release();
 });
 });
 
+function formatDate(timestamp = Date.now()) {
+  // Convert input to number if possible
+  const ts = Number(timestamp);
 
-function formatDate(date = new Date()) {
-  return date.toLocaleDateString("en-US", {
+  if (!ts) {
+    console.error("Invalid timestamp:", timestamp);
+    return "Invalid date";
+  }
+
+  let date;
+
+  // Detect unit
+  if (ts > 1e12) {
+    date = new Date(ts); // milliseconds
+  } else {
+    date = new Date(ts * 1000); // seconds
+  }
+
+  if (isNaN(date.getTime())) {
+    console.error("Date parsing failed:", timestamp);
+    return "Invalid date";
+  }
+
+  return date.toLocaleString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit",
-    
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
   });
 }
 export {query,formatDate}

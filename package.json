@@ -2,7 +2,9 @@
   "name": "forms.techservice.ng",
   "version": "1.0.0",
   "main": "index.js",
+  "type":"module",
   "scripts": {
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +22,7 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "mysql2": "^3.15.3",
-    "nodemon": "^3.1.11",
-    "ojs-loader": "^1.0.5"
+    "nodemon": "^3.1.14",
+    "ojs-loader": "^1.0.7"
   }
 }
