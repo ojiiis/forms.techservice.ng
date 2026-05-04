@@ -56,12 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
  e.preventDefault();
  let data = Object.fromEntries(new FormData(v));
  console.log(data);
-  fetch(new URL(v.action).pathname,{
+ let f = await fetch(new URL(v.action).pathname,{
     method:v.method.toUpperCase(),
     headers:{
      "Content-Type":"application/json"
     },
     body:JSON.stringify(data)
   });
+  let data = await f.json();
+   if(data.status){
+                alert('Registration successful! Redirecting to dashboard...');
+                window.location.href = data.data.redirect;
+            }else{
+                alert('Registration failed: ' + data.message);
+     }
     })
 })

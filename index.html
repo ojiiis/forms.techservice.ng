@@ -32,7 +32,7 @@
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="/docs">Docs</a></li>
+                    <li><a href="/docs/api-reference">Docs</a></li>
                     <li><a href="auth" class="cta-link btn btn-secondary">Login / Dashboard</a></li>
                 </ul>
             </nav>
@@ -81,7 +81,7 @@
                 <div class="code-snippet-card">
                     <p class="code-label">HTML Integration Example</p>
                     <pre><code>
-&lt;form action="https://forms.techservice.ng/submit/<b>YOUR-API-KEY</b>" method="POST"&gt;
+&lt;form tech-service-form="<b>FORM-ID</b>" method="POST"&gt;
     &lt;label for="name"&gt;Name:&lt;/label&gt;
     &lt;input type="text" name="name" required&gt;
 
@@ -90,6 +90,7 @@
     
     &lt;button type="submit"&gt;Send Message&lt;/button&gt;
 &lt;/form&gt;
+&lt;script&gt; src="https://forms.techservice.ng/script/<b>FORM-ID</b>">&lt;/script&gt;
                     </code></pre>
                 </div>
             </div>

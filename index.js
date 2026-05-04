@@ -138,7 +138,7 @@ app.get("/forms",async(req,res)=>{
  let forms = await query("SELECT * FROM `forms` WHERE `owner_id`=?",[pubKey]);
   
  for(let i in forms){
-    let ts = await query("SELECT * FROM `form_submission` WHERE `owner_id`=?",[pubKey]);
+    let ts = await query("SELECT * FROM `form_submission` WHERE `owner_id`=? AND form_id=? ",[pubKey,forms[i].form_id]);
     forms[i].last_received = formatDate(forms[i].last_active);
     forms[i].total_received = ts.length;
   }
@@ -146,8 +146,9 @@ app.get("/forms",async(req,res)=>{
   res.end(ojs.get("forms.html",{forms,user:user.fullname}));
 });
 
-app.get("/new",(req,res)=>{
-res.end(ojs.get("new.html"));
+app.get("/new",async (req,res)=>{
+let [pubKey,user] = await Promise.all([public_key(user_id),getUser(user_id)]);
+res.end(ojs.get("new.html",{user:user.fullname}));
 });
 
 app.get("/auth",(req,res)=>{
@@ -240,7 +241,7 @@ app.post("/new",async(req,res)=>{
         status:true,
         data:{
           message:"form created",
-          redirect:redirectUrl,
+          redirect:"/dashboard",
         }
       }
       res.end(JSON.stringify(response));

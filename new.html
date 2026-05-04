@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="/docs/api-reference"><i class="fas fa-book"></i> Docs</a></li>
                     <li class="user-dropdown">
-                        <a href="/settings">Welcome, <b>Dev User</b></a>
+                        <a href="/settings">Welcome, <b><var>user</var></b></a>
                     </li>
                     <li><a href="/app/logout" class="btn btn-primary btn-sm">Logout</a></li>
                 </ul>
@@ -121,6 +121,27 @@
     
     <footer id="site-footer" class="footer-section">
         </footer>
-    <script src="/assets/js/main.js"></script>
+    <script>
+             const newForm = document.getElementById('new-form-setup');
+    newForm.onsubmit = async(e) => {
+        e.preventDefault();
+        let datad = Object.fromEntries(new FormData(newForm));
+        await fetch('/new',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(datad)
+        }).then(res=>res.json()).then(data=>{
+            if(data.status){
+                alert('Form creation successful! Redirecting to dashboard...');
+                window.location.href = '/forms';
+            }else{
+                alert('Form creation failed: ' + data.message);
+            }
+        }).catch(err=>{
+            alert('An error occurred: ' + err.message);
+        });
+    };
+    </script>
+    <script src="/assets/js/main.js?a=a"></script>
 </body>
 </html>
