@@ -96,7 +96,7 @@ app.get("/submissions",async(req,res)=>{
 app.get("/submissions/:form_id",async(req,res)=>{
  const form_id = req.params.form_id;
  let [pubKey,user] = await Promise.all([public_key(user_id),getUser(user_id)]);
- let forms = await query("SELECT q1.`id`, q1.`form_id`, q1.`data`, q1.`view`, q1.`date`,q2.form_label FROM `form_submission` q1 INNER JOIN `forms` q2 on q1.`form_id`=q2.`form_id` AND q1.owner_id=? WHERE `q1`.`form_id`=?",[pubKey,form_id]);
+ let forms = await query("SELECT q1.`id`, q1.`form_id`, q1.`data`, q1.`view`, q1.`date`,q2.form_label FROM `form_submission` q1 INNER JOIN `forms` q2 on q1.`form_id`=q2.`form_id` AND q1.owner_id=? WHERE `q1`.`form_id`=? ORDER by id DESC",[pubKey,form_id]);
   for(let i in forms){
     let d = JSON.parse(forms[i].data);
    let data= [];
